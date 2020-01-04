@@ -1,32 +1,4 @@
-const colors = {
-  green: {
-    wrapperBackground: "#E6E1C3",
-    headerBackground: "#C1C72C",
-    headerColor: "black",
-    photoBorderColor: "#black"
-  },
-  blue: {
-    wrapperBackground: "#5F64D3",
-    headerBackground: "#26175A",
-    headerColor: "white",
-    photoBorderColor: "#73448C"
-  },
-  pink: {
-    wrapperBackground: "#879CDF",
-    headerBackground: "#FF8374",
-    headerColor: "white",
-    photoBorderColor: "#FEE24C"
-  },
-  red: {
-    wrapperBackground: "#DE9967",
-    headerBackground: "#870603",
-    headerColor: "white",
-    photoBorderColor: "white"
-  }
-};
-
-function generateHTML(data, profile_image, profile_name,location, profile_link, blog, bio, public_repos, followers, stars, following) {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
      <head>
         <meta charset="UTF-8" />
@@ -40,39 +12,39 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
         <main class="container">
             <div class="wrapper">
                 <div class="photo-header">
-                    <img src=${profile_image} alt="Github profile image">
+                    <img src=https://avatars3.githubusercontent.com/u/45440631?v=4 alt="Github profile image">
                     <h1>Hi!</h1> 
-                    <h2>My name is ${profile_name}!</h2> 
+                    <h2>My name is Cassidy!</h2> 
                     
                     
                     <div class="links-nav">
-                    <a class="nav-link" href=?????><i class="fas fa-map-marker-alt">${location}</i></a>
-                    <a class="nav-link" href=${profile_link}><i class="fab fa-github">Github</i></a>
-                    <a class="nav-link" href=${blog}><i class="fas fa-blog">Blog</i></a>
+                    <a class="nav-link" href=?????><i class="fas fa-map-marker-alt">Nashville, TN</i></a>
+                    <a class="nav-link" href=https://github.com/Cassquatch><i class="fab fa-github">Github</i></a>
+                    <a class="nav-link" href=https://cassquatch.github.io/Portfolio/><i class="fas fa-blog">Blog</i></a>
                     </div>
                     </div>
                     
                     <div class="container">
-                    <h3 class = col>${bio}</h3>
+                    <h3 class = col>Jr Developer harnessing a love for coding and learning, excited for where it leads.</h3>
                   <div class="row">
                     <div class = "card col">
                             <h5>Public Repositories</h5>
-                            <h6>${public_repos}</h6>
+                            <h6>16</h6>
                     </div>
 
                     <div class = "card col">
                           <h5>Followers</h5>
-                          <h6>${followers}</h6>
+                          <h6>7</h6>
                     </div>
                   </div>
                   <div class="row">
                   <div class = "card col">
                           <h5>Github Stars</h5>
-                          <h6>${stars}</h6>
+                          <h6>3</h6>
                   </div>
                   <div class = "card col">
                           <h5>Following</h5>
-                          <h6>${following}</h6>
+                          <h6>7</h6>
                     </div>
                   </div>
                 </div>
@@ -96,7 +68,7 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
            height: 100%;
            }
            .wrapper {
-           background-color: ${colors[data.color].wrapperBackground};
+           background-color: #879CDF;
            padding-top: 100px;
            }
            body {
@@ -138,8 +110,8 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
            display: flex;
            justify-content: center;
            flex-wrap: wrap;
-           background-color: ${colors[data.color].headerBackground};
-           color: ${colors[data.color].headerColor};
+           background-color: #FF8374;
+           color: white;
            padding: 10px;
            width: 95%;
            border-radius: 6px;
@@ -150,7 +122,7 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
            border-radius: 50%;
            object-fit: cover;
            margin-top: -75px;
-           border: 6px solid ${colors[data.color].photoBorderColor};
+           border: 6px solid #FEE24C;
            box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
            }
            .photo-header h1, .photo-header h2 {
@@ -193,8 +165,8 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
            .card {
              padding: 20px;
              border-radius: 6px;
-             background-color: ${colors[data.color].headerBackground};
-             color: ${colors[data.color].headerColor};
+             background-color: #FF8374;
+             color: white;
              margin: 20px;
            }
            
@@ -216,10 +188,4 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
            }
         </style>
       </body>
-    </html>`
-}
-
-module.exports = {
-  colors: colors,
-  generateHTML: generateHTML
-}
+    </html>

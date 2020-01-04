@@ -1,7 +1,10 @@
-const generate_html = require('./generateHTML');
+const html = require('./generateHTML');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const axios = require('axios');
+const util = require('util');
+
+const asyncWriteFile = util.promisify(fs.writeFile);
 
 const inquire = () => {
     return inquirer.prompt([{
@@ -32,6 +35,7 @@ const init = async() => {
     let stars = null;
     let public_repos = null;
     let blog = null;
+    let location = null;
 
     try{
         const data = await inquire();
@@ -50,6 +54,10 @@ const init = async() => {
                 bio = info.bio;
                 public_repos = info.public_repos;
                 blog = info.blog;
+                location = info.location;
+                followers = info.followers;
+                following = info.following;
+                let api_key = "AIzaSyCujY5-2G4cPCUDlnzVADfkFeclTUZ5GKc";
 
                 //get github stars
                 axios
@@ -58,7 +66,10 @@ const init = async() => {
                         res.data.forEach(function(el){
                             stars += el.stargazers_count
                         });
+
                         console.log(stars);
+                        let html_page = html.generateHTML(data, profile_image, profile_name,location, profile_link, blog, bio, public_repos, followers, stars, following);
+                        asyncWriteFile("index.html", html_page);
                     });
                
             });
