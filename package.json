@@ -1,0 +1,26 @@
+{
+  "name": "profile-generator",
+  "version": "1.0.0",
+  "description": "Command line application to generate a Developer Profile based off Github username provided by inquirer answer.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "electron": "^5.0.3",
+    "electron-html-to": "^2.6.0",
+    "inquirer": "^7.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cassquatch/Profile-Generator.git"
+  },
+  "author": "Cassidy Fortner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cassquatch/Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/Cassquatch/Profile-Generator#readme"
+}
