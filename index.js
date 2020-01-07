@@ -1,14 +1,13 @@
 const html = require('./generateHTML');
 const fs = require('fs'),
     convertFactory = require('electron-html-to');
-
+    
 const conversion = convertFactory({
     converterPath: convertFactory.converters.PDF
 });
 const inquirer = require('inquirer');
 const axios = require('axios');
 const util = require('util');
-
 const asyncWriteFile = util.promisify(fs.writeFile);
 
 const inquire = () => {
@@ -22,15 +21,11 @@ const inquire = () => {
         name: "color",
         choices: ["green", "blue", "pink", "red"],
         message: "Pick your favorite color from these options."
-
-
     }])
 }
 
 //global variables to work with api calls
-
 const init = async () => {
-
     let profile_image = null;
     let profile_name = null;
     let profile_link = null;
@@ -41,7 +36,6 @@ const init = async () => {
     let public_repos = null;
     let blog = null;
     let location = null;
-
 
     try {
         const data = await inquire();
@@ -63,7 +57,7 @@ const init = async () => {
                 location = info.location;
                 followers = info.followers;
                 following = info.following;
-                let api_key = "AIzaSyCujY5-2G4cPCUDlnzVADfkFeclTUZ5GKc";
+                const api_key = "AIzaSyCujY5-2G4cPCUDlnzVADfkFeclTUZ5GKc";
 
                 //get github stars
                 axios
@@ -72,22 +66,19 @@ const init = async () => {
                         res.data.forEach(function (el) {
                             stars += el.stargazers_count
                         });
-                        let city = location.split(",")[0];
-                        let state = location.split(",")[1];
                         const google_maps = `https://maps.googleapis.com/maps/api/staticmap?center=${location}&size=600x600&key=${api_key}`;
-                        console.log(city + "," + state);
-                        console.log(stars);
+
                         let html_page = html.generateHTML(data, profile_image, profile_name, google_maps, location, profile_link, blog, bio, public_repos, followers, stars, following);
+                        
+                        //write the generated html to an index file to later be converted into a pdf
                         asyncWriteFile("index.html", html_page);
 
-
-
+                        //convert the index.html into profile.pdf with electron-html-to node package
                         conversion({file: "index.html", html: html_page}, function (err, result) {
                             if (err) {
                                 return console.error(err);
                             }
 
-                            
                             result.stream.pipe(fs.createWriteStream('profile.pdf'));
                             conversion.kill(); 
                         });
@@ -98,7 +89,5 @@ const init = async () => {
     catch (error) {
         console.log(error);
     }
-
-    console.log("Success! This worked!");
 }
 init()
