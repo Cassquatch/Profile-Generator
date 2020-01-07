@@ -25,7 +25,7 @@ const colors = {
   }
 };
 
-function generateHTML(data, profile_image, profile_name,location, profile_link, blog, bio, public_repos, followers, stars, following) {
+function generateHTML(data, profile_image, profile_name,google_maps, location, profile_link, blog, bio, public_repos, followers, stars, following) {
   return `<!DOCTYPE html>
   <html lang="en">
      <head>
@@ -46,7 +46,7 @@ function generateHTML(data, profile_image, profile_name,location, profile_link, 
                     
                     
                     <div class="links-nav">
-                    <a class="nav-link" href=?????><i class="fas fa-map-marker-alt">${location}</i></a>
+                    <a class="nav-link" href="${google_maps}"><i class="fas fa-map-marker-alt">${location}</i></a>
                     <a class="nav-link" href=${profile_link}><i class="fab fa-github">Github</i></a>
                     <a class="nav-link" href=${blog}><i class="fas fa-blog">Blog</i></a>
                     </div>
