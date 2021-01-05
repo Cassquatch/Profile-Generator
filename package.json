@@ -4,7 +4,7 @@
   "description": "Command line application to generate a Developer Profile based off Github username provided by inquirer answer.",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "electron": "^5.0.3",
     "electron-html-to": "^2.6.0",
     "inquirer": "^7.0.1"
